@@ -1,4 +1,4 @@
-# tour-vr-cwi
+# cwi-vr-experience
 
 ```
 nvm use
@@ -7,7 +7,7 @@ npm install
 
 ---
 
-Desenvolvimento:
+## Desenvolvimento:
 
   em um terminal:
   ```
@@ -21,7 +21,7 @@ Desenvolvimento:
 
 ---
 
-Build para produção (pasta ./dist):
+## Build para produção (gera pasta ./dist):
 
 ```
 npm run build
