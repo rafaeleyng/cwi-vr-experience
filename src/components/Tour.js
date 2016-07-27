@@ -3,8 +3,7 @@ import Macchina from 'macchina'
 import Room from './Room'
 import AssetImg from './AssetImg'
 import states from '../states'
-import assetsPreloader from '../services/assetsPreloader'
-import eventService from '../services/eventService'
+import assetsPreloadService from '../services/assetsPreloadService'
 
 export default class Tour extends React.Component {
   constructor(props) {
@@ -42,7 +41,7 @@ export default class Tour extends React.Component {
 
   render() {
     // assets
-    const assets = assetsPreloader(this.macchina.state(), states, [
+    const assets = assetsPreloadService.getAssetsTag(this.macchina.state(), states, [
       <AssetImg key={this.state.navImageId} id={this.state.navImageId} src="./assets/image/nav.png" />,
       <AssetImg key={this.state.welcomeImageId} id={this.state.welcomeImageId} src="./assets/image/welcome.png" />,
     ])

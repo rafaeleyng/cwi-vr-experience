@@ -1,6 +1,8 @@
 import React from 'react'
-import eventService from './eventService'
 
+/*
+  util
+*/
 const assetsAcc = []
 
 // encontra todos os estados que podem ser alcançados a partir do estado atual
@@ -14,7 +16,26 @@ const findReachableStatesAssets = (reachableStatesNames, states, currentStateNam
   })
   .reduce((acc, assets) => acc.concat(assets), [])
 
-const assetsPreloader = (currentStateName, states, defaultAssets = []) => {
+/*
+  service
+*/
+const assetsPreloadService = {}
+
+/*
+  properties
+*/
+assetsPreloadService.loadedImages = 0
+assetsPreloadService.isLoading = false
+
+/*
+  functions
+*/
+assetsPreloadService.didLoadAllImages = () => {
+  const imageAssets = assetsAcc.filter(a => a.type.name === 'AssetImg')
+  return imageAssets.length === assetsPreloadService.loadedImages
+}
+
+assetsPreloadService.getAssetsTag = (currentStateName, states, defaultAssets = []) => {
   const currentState = states.find(s => s.name === currentStateName)
 
   if (!currentState.properties || !currentState.properties.nav) {
@@ -36,8 +57,8 @@ const assetsPreloader = (currentStateName, states, defaultAssets = []) => {
     }
   })
 
-  if (!didLoadAllImages()) {
-    assetsPreloader.isLoading = true
+  if (!assetsPreloadService.didLoadAllImages()) {
+    assetsPreloadService.isLoading = true
   }
 
   return (
@@ -47,25 +68,4 @@ const assetsPreloader = (currentStateName, states, defaultAssets = []) => {
   )
 }
 
-const didLoadAllImages = () => {
-  const imageAssets = assetsAcc.filter(a => a.type.name === 'AssetImg')
-  console.log('$ didLoadAllImages imageAssets:', imageAssets)
-  console.log('$ didLoadAllImages loadedImages:', assetsPreloader.loadedImages)
-  console.log('$ didLoadAllImages return:', imageAssets.length === assetsPreloader.loadedImages)
-  return imageAssets.length === assetsPreloader.loadedImages
-}
-
-assetsPreloader.loadedImages = 0
-assetsPreloader.isLoading = false
-
-eventService.on('asset:loaded:image', imageId => {
-  assetsPreloader.loadedImages++
-  console.log('# 1', assetsPreloader.loadedImages, imageId);
-  if (didLoadAllImages()) {
-    console.log('# 2', assetsPreloader.loadedImages, imageId);
-    eventService.emit('asset:loaded:images')
-    assetsPreloader.isLoading = false
-  }
-})
-
-export default assetsPreloader
+export default assetsPreloadService
