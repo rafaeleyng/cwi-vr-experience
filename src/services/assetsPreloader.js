@@ -57,7 +57,9 @@ assetsPreloader.isLoading = false
 
 eventService.on('asset:loaded:image', imageId => {
   assetsPreloader.loadedImages++
+  console.log('# 1', assetsPreloader.loadedImages, imageId);
   if (didLoadAllImages()) {
+    console.log('# 2', assetsPreloader.loadedImages, imageId);
     eventService.emit('asset:loaded:images')
     assetsPreloader.isLoading = false
   }
