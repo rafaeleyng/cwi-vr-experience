@@ -82660,13 +82660,18 @@
 	            height: '5',
 	            scale: '1 1 1'
 	          },
-	          _react2.default.createElement('a-animation', { attribute: 'material.opacity', begin: 'fade', to: '1' }),
 	          _react2.default.createElement('a-animation', {
-	            repeat: '1',
+	            attribute: 'material.opacity',
+	            to: '1',
+	            begin: 'fade',
+	            dur: '400'
+	          }),
+	          _react2.default.createElement('a-animation', {
 	            attribute: 'scale',
-	            begin: 'mouseenter',
-	            dur: '700',
 	            to: '1.2 1.2 1.2',
+	            begin: 'mouseenter',
+	            dur: '800',
+	            repeat: '1',
 	            direction: 'alternate'
 	          })
 	        ),
@@ -82675,10 +82680,15 @@
 	          {
 	            ref: 'navText',
 	            text: 'text: ' + this.props.nav.label + '; size: 1.2; font: Montserrat;',
-	            material: 'transparent: true; opacity: ' + navOpacity + '; color: #ffffff',
+	            material: 'transparent: true; opacity: ' + navOpacity + '; color: ' + (this.state.focus ? '#f6b63e' : '#ffffff') + ' ',
 	            position: '3 -0.4 0'
 	          },
-	          _react2.default.createElement('a-animation', { attribute: 'material.opacity', begin: 'fade', to: '1' })
+	          _react2.default.createElement('a-animation', {
+	            attribute: 'material.opacity',
+	            to: '1',
+	            begin: 'fade',
+	            dur: '400'
+	          })
 	        )
 	      );
 	    }
