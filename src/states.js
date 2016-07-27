@@ -1,6 +1,5 @@
 import React from 'react'
 import AssetImg from './components/AssetImg'
-// import AssetSound from './components/AssetSound'
 
 export default [
   {
@@ -69,7 +68,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sl-fachada" id="sky-sl-fachada" src="./assets/sky/sl-fachada.jpg" />,
+          {
+            id: "sky-sl-fachada",
+            src: "./assets/sky/sl-fachada.jpg",
+          },
         ],
       },
     },
@@ -105,8 +107,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sl-hall" id="sky-sl-hall" src="./assets/sky/sl-hall.jpg" />,
-          // <AssetSound key="sound-sl-hall" id="sound-sl-hall" src="./assets/sound/sl-hall.mp3" />,
+          {
+            id: "sky-sl-hall",
+            src: "./assets/sky/sl-hall.jpg",
+          },
         ],
       },
     },
@@ -149,8 +153,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sl-terceiro-desenvolvimento" id="sky-sl-terceiro-desenvolvimento" src="./assets/sky/sl-terceiro-desenvolvimento.jpg" />,
-          // <AssetSound key="sound-sl-terceiro-desenvolvimento" id="sound-sl-terceiro-desenvolvimento" src="./assets/sound/sl-terceiro-desenvolvimento.mp3" />,
+          {
+            id: 'sky-sl-terceiro-desenvolvimento',
+            src: './assets/sky/sl-terceiro-desenvolvimento.jpg',
+          },
         ],
       },
     },
@@ -178,8 +184,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sl-terceiro-auditorio" id="sky-sl-terceiro-auditorio" src="./assets/sky/sl-terceiro-auditorio.jpg" />,
-          // <AssetSound key="sound-sl-terceiro-auditorio" id="sound-sl-terceiro-auditorio" src="./assets/sound/sl-terceiro-auditorio.mp3" />,
+          {
+            id: 'sky-sl-terceiro-auditorio',
+            src: './assets/sky/sl-terceiro-auditorio.jpg',
+          },
         ],
       },
     },
@@ -221,7 +229,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sl-quinto-meetingspace" id="sky-sl-quinto-meetingspace" src="./assets/sky/sl-quinto-meetingspace.jpg" />,
+          {
+            id: 'sky-sl-quinto-meetingspace',
+            src: './assets/sky/sl-quinto-meetingspace.jpg',
+          },
         ],
       },
     },
@@ -249,8 +260,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sl-quinto-desenvolvimento" id="sky-sl-quinto-desenvolvimento" src="./assets/sky/sl-quinto-desenvolvimento.jpg" />,
-          // <AssetSound key="sound-sl-quinto-desenvolvimento" id="sound-sl-quinto-desenvolvimento" src="./assets/sound/sl-quinto-desenvolvimento.mp3" />,
+          {
+            id: 'sky-sl-quinto-desenvolvimento',
+            src: './assets/sky/sl-quinto-desenvolvimento.jpg',
+          },
         ],
       },
     },
@@ -292,7 +305,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sl-sexto-exterior" id="sky-sl-sexto-exterior" src="./assets/sky/sl-sexto-exterior.jpg" />,
+          {
+            id: 'sky-sl-sexto-exterior',
+            src: './assets/sky/sl-sexto-exterior.jpg',
+          },
         ],
       },
     },
@@ -334,7 +350,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-cg-hall" id="sky-cg-hall" src="./assets/sky/cg-hall.jpg" />,
+          {
+            id: 'sky-cg-hall',
+            src: './assets/sky/cg-hall.jpg',
+          },
         ],
       },
     },
@@ -362,8 +381,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-cg-desenvolvimento" id="sky-cg-desenvolvimento" src="./assets/sky/cg-desenvolvimento.jpg" />,
-          // <AssetSound key="sound-cg-desenvolvimento" id="sound-cg-desenvolvimento" src="./assets/sound/cg-desenvolvimento.mp3" />,
+          {
+            id: 'sky-cg-desenvolvimento',
+            src: './assets/sky/cg-desenvolvimento.jpg',
+          },
         ],
       },
     },
@@ -405,7 +426,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sp-hall" id="sky-sp-hall" src="./assets/sky/sp-hall.jpg" />,
+          {
+            id: 'sky-sp-hall',
+            src: './assets/sky/sp-hall.jpg',
+          },
         ],
       },
     },
@@ -433,8 +457,10 @@ export default [
       },
       assets: {
         all: [
-          <AssetImg key="sky-sp-desenvolvimento" id="sky-sp-desenvolvimento" src="./assets/sky/sp-desenvolvimento.jpg" />,
-          // <AssetSound key="sound-sp-desenvolvimento" id="sound-sp-desenvolvimento" src="./assets/sound/sp-desenvolvimento.mp3" />,
+          {
+            id: 'sky-sp-desenvolvimento',
+            src: './assets/sky/sp-desenvolvimento.jpg',
+          },
         ],
       },
     },

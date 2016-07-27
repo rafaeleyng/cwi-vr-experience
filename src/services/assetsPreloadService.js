@@ -1,4 +1,5 @@
 import React from 'react'
+import AssetImg from '../components/AssetImg'
 
 /*
   util
@@ -19,53 +20,49 @@ const findReachableStatesAssets = (reachableStatesNames, states, currentStateNam
 /*
   service
 */
-const assetsPreloadService = {}
+class AssetsPreloadService {
+  constructor() {
+    this.loadedImages = 0
+    this.isLoading = false
+  }
 
-/*
-  properties
-*/
-assetsPreloadService.loadedImages = 0
-assetsPreloadService.isLoading = false
+  didLoadAllImages() {
+    const imageAssets = assetsAcc.filter(a => a.type.name === 'AssetImg')
+    return imageAssets.length === this.loadedImages
+  }
 
-/*
-  functions
-*/
-assetsPreloadService.didLoadAllImages = () => {
-  const imageAssets = assetsAcc.filter(a => a.type.name === 'AssetImg')
-  return imageAssets.length === assetsPreloadService.loadedImages
-}
+  getAssetsTag(currentStateName, states, defaultAssets = []) {
+    const currentState = states.find(s => s.name === currentStateName)
 
-assetsPreloadService.getAssetsTag = (currentStateName, states, defaultAssets = []) => {
-  const currentState = states.find(s => s.name === currentStateName)
+    if (!currentState.properties || !currentState.properties.nav) {
+      return (
+        <a-assets>
+          {defaultAssets.map(asset => <AssetImg key={asset.id} id={asset.id} src={asset.src} />)}
+        </a-assets>
+      )
+    }
 
-  if (!currentState.properties || !currentState.properties.nav) {
+    const reachableStatesNames = currentState.properties.nav.all.map(s => s.state)
+    const reachableStatesAssets = findReachableStatesAssets(reachableStatesNames, states, currentStateName)
+    const currentStateAssets = currentState.properties.assets.all || []
+    const assets = defaultAssets.concat(currentStateAssets.concat(reachableStatesAssets))
+
+    assets.forEach(asset => {
+      if (assetsAcc.every(a => a.key !== asset.id)) {
+        assetsAcc.push(<AssetImg key={asset.id} id={asset.id} src={asset.src} />)
+      }
+    })
+
+    if (!this.didLoadAllImages()) {
+      this.isLoading = true
+    }
+
     return (
-      <a-assets>
-        {defaultAssets}
+      <a-assets timeout="15000">
+        {assetsAcc}
       </a-assets>
     )
   }
-
-  const reachableStatesNames = currentState.properties.nav.all.map(s => s.state)
-  const reachableStatesAssets = findReachableStatesAssets(reachableStatesNames, states, currentStateName)
-  const currentStateAssets = currentState.properties.assets.all || []
-  const assets = defaultAssets.concat(currentStateAssets.concat(reachableStatesAssets))
-
-  assets.forEach(asset => {
-    if (assetsAcc.every(a => a.key !== asset.key)) {
-      assetsAcc.push(asset)
-    }
-  })
-
-  if (!assetsPreloadService.didLoadAllImages()) {
-    assetsPreloadService.isLoading = true
-  }
-
-  return (
-    <a-assets timeout="15000">
-      {assetsAcc}
-    </a-assets>
-  )
 }
 
-export default assetsPreloadService
+export default new AssetsPreloadService()
