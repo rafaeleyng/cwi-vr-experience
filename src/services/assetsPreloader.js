@@ -49,6 +49,9 @@ const assetsPreloader = (currentStateName, states, defaultAssets = []) => {
 
 const didLoadAllImages = () => {
   const imageAssets = assetsAcc.filter(a => a.type.name === 'AssetImg')
+  console.log('$ didLoadAllImages imageAssets:', imageAssets)
+  console.log('$ didLoadAllImages loadedImages:', assetsPreloader.loadedImages)
+  console.log('$ didLoadAllImages return:', imageAssets.length === assetsPreloader.loadedImages)
   return imageAssets.length === assetsPreloader.loadedImages
 }
 
