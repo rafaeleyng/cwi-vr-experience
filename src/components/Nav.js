@@ -27,6 +27,7 @@ export default class Nav extends React.Component {
     clearTimeout(this.timeout)
     this.setState({ focus: true })
     this.timeout = setTimeout(() => {
+      this.setState({ focus: false })
       this.props.navCallback(this.props.nav.state)
     }, 1800)
   }

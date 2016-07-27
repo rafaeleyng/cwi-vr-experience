@@ -82,6 +82,7 @@ export default class Tour extends React.Component {
 
     return (
       <a-scene>
+        <a-entity light="type: ambient; color: #FFF; intensity: 1"></a-entity>
         {assets}
         {camera}
         {rooms}
