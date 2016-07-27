@@ -6,8 +6,9 @@ export default class Room extends React.Component {
     const { visible, room, listNav = [], listImage = [], navImageId, navCallback } = this.props
     // sky
     const skyProps = {}
-    skyProps.src = room.skySrc
-    skyProps.color = room.skyColor || '#ffffff'
+    const skySrc = room.skySrc ? `src: ${room.skySrc};` : ''
+    const skyColor = room.skyColor ? `color: ${room.skyColor};` : ''
+    skyProps.material = `${skySrc} ${skyColor} shader: flat`
     if (room.skySound && visible) {
       skyProps.sound = `src: ${room.skySound}; autoplay: true`
     }

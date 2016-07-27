@@ -4,7 +4,6 @@ export default class Nav extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      navImageMaterial: `transparent: true; opacity: 0.9; shader: flat; src: #${this.props.navImageId};`,
       focus: false,
     }
     // bind
@@ -13,14 +12,19 @@ export default class Nav extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.navEntity.addEventListener('mouseenter', this.handleEnterNav)
-    this.refs.navEntity.addEventListener('mouseleave', this.handleLeaveNav)
+    this.refs.navImage.addEventListener('mouseenter', this.handleEnterNav)
+    this.refs.navImage.addEventListener('mouseleave', this.handleLeaveNav)
+
+    setTimeout(() => {
+      this.refs.navImage.emit('fade')
+      this.refs.navText.emit('fade')
+    }, 2000)
   }
 
   componentWillUnmount() {
     clearTimeout(this.timeout)
-    this.refs.navEntity.removeEventListener('mouseenter', this.handleEnterNav)
-    this.refs.navEntity.removeEventListener('mouseleave', this.handleLeaveNav)
+    this.refs.navImage.removeEventListener('mouseenter', this.handleEnterNav)
+    this.refs.navImage.removeEventListener('mouseleave', this.handleLeaveNav)
   }
 
   handleEnterNav() {
@@ -44,12 +48,13 @@ export default class Nav extends React.Component {
         position={this.props.nav.position}
       >
         <a-image
-          ref="navEntity"
-          material={this.state.navImageMaterial}
+          ref="navImage"
+          material={`transparent: true; opacity: 0; shader: flat; src: #${this.props.navImageId};`}
           width="5"
           height="5"
           scale="1 1 1"
         >
+          <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
           <a-animation
             repeat="1"
             attribute="scale"
@@ -60,10 +65,13 @@ export default class Nav extends React.Component {
           ></a-animation>
         </a-image>
         <a-entity
+          ref="navText"
           text={`text: ${this.props.nav.label}; size: 1.2; font: Montserrat;`}
-          material={`color: ${this.state.focus ? '#f6b63e' : '#ffffff'}`}
+          material={`transparent: true; opacity: 0; color: #ffffff`}
           position="3 -0.4 0"
-        ></a-entity>
+        >
+          <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
+        </a-entity>
       </a-entity>
     )
   }
