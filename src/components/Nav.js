@@ -1,4 +1,5 @@
 import React from 'react'
+import eventService from '../services/eventService'
 
 export default class Nav extends React.Component {
   constructor(props) {
@@ -15,10 +16,10 @@ export default class Nav extends React.Component {
     this.refs.navImage.addEventListener('mouseenter', this.handleEnterNav)
     this.refs.navImage.addEventListener('mouseleave', this.handleLeaveNav)
 
-    setTimeout(() => {
+    eventService.on('asset:loaded:images', () => {
       this.refs.navImage.emit('fade')
       this.refs.navText.emit('fade')
-    }, 2000)
+    })
   }
 
   componentWillUnmount() {

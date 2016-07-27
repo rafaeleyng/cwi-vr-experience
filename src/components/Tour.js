@@ -4,6 +4,7 @@ import Room from './Room'
 import AssetImg from './AssetImg'
 import states from '../states'
 import assetsPreloader from '../services/assetsPreloader'
+import eventService from '../services/eventService'
 
 export default class Tour extends React.Component {
   constructor(props) {

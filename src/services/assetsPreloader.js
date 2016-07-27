@@ -1,4 +1,5 @@
 import React from 'react'
+import eventService from './eventService'
 
 const assetsAcc = []
 
@@ -13,7 +14,7 @@ const findReachableStatesAssets = (reachableStatesNames, states, currentStateNam
   })
   .reduce((acc, assets) => acc.concat(assets), [])
 
-export default (currentStateName, states, defaultAssets = []) => {
+const assetsPreloader = (currentStateName, states, defaultAssets = []) => {
   const currentState = states.find(s => s.name === currentStateName)
 
   if (!currentState.properties || !currentState.properties.nav) {
@@ -35,9 +36,31 @@ export default (currentStateName, states, defaultAssets = []) => {
     }
   })
 
+  if (!didLoadAllImages()) {
+    assetsPreloader.isLoading = true
+  }
+
   return (
     <a-assets timeout="15000">
       {assetsAcc}
     </a-assets>
   )
 }
+
+const didLoadAllImages = () => {
+  const imageAssets = assetsAcc.filter(a => a.type.name === 'AssetImg')
+  return imageAssets.length === assetsPreloader.loadedImages
+}
+
+assetsPreloader.loadedImages = 0
+assetsPreloader.isLoading = false
+
+eventService.on('asset:loaded:image', imageId => {
+  assetsPreloader.loadedImages++
+  if (didLoadAllImages()) {
+    eventService.emit('asset:loaded:images')
+    assetsPreloader.isLoading = false
+  }
+})
+
+export default assetsPreloader
