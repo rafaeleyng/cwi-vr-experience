@@ -61,23 +61,33 @@ export default class Nav extends React.Component {
           height="5"
           scale="1 1 1"
         >
-          <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
           <a-animation
-            repeat="1"
+            attribute="material.opacity"
+            to="1"
+            begin="fade"
+            dur="400"
+          ></a-animation>
+          <a-animation
             attribute="scale"
-            begin="mouseenter"
-            dur="700"
             to="1.2 1.2 1.2"
+            begin="mouseenter"
+            dur="800"
+            repeat="1"
             direction="alternate"
           ></a-animation>
         </a-image>
         <a-entity
           ref="navText"
           text={`text: ${this.props.nav.label}; size: 1.2; font: Montserrat;`}
-          material={`transparent: true; opacity: ${navOpacity}; color: #ffffff`}
+          material={`transparent: true; opacity: ${navOpacity}; color: ${this.state.focus ? '#f6b63e' : '#ffffff'} `}
           position="3 -0.4 0"
         >
-          <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
+          <a-animation
+            attribute="material.opacity"
+            to="1"
+            begin="fade"
+            dur="400"
+          ></a-animation>
         </a-entity>
       </a-entity>
     )
