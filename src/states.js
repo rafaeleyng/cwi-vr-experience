@@ -86,7 +86,7 @@ export default [
       room: {
         single: {
           skySrc: '#sky-sl-hall',
-          skySound: '#sound-sl-hall',
+          skySound: './assets/sound/sl-hall.mp3',
         },
       },
       nav: {
@@ -125,7 +125,7 @@ export default [
       room: {
         single: {
           skySrc: '#sky-sl-terceiro-desenvolvimento',
-          skySound: '#sound-sl-terceiro-desenvolvimento',
+          skySound: './assets/sound/sl-terceiro-desenvolvimento.mp3',
         },
       },
       nav: {
@@ -164,7 +164,7 @@ export default [
       room: {
         single: {
           skySrc: '#sky-sl-terceiro-auditorio',
-          skySound: '#sound-sl-terceiro-auditorio',
+          skySound: './assets/sound/sl-terceiro-auditorio.mp3',
         },
       },
       nav: {
@@ -235,7 +235,7 @@ export default [
       room: {
         single: {
           skySrc: '#sky-sl-quinto-desenvolvimento',
-          skySound: '#sound-sl-quinto-desenvolvimento',
+          skySound: './assets/sound/sl-quinto-desenvolvimento.mp3',
         },
       },
       nav: {
@@ -348,7 +348,7 @@ export default [
       room: {
         single: {
           skySrc: '#sky-cg-desenvolvimento',
-          skySound: '#sound-cg-desenvolvimento',
+          skySound: './assets/sound/cg-desenvolvimento.mp3',
         },
       },
       nav: {
@@ -419,7 +419,7 @@ export default [
       room: {
         single: {
           skySrc: '#sky-sp-desenvolvimento',
-          skySound: '#sound-sp-desenvolvimento',
+          skySound: './assets/sound/sp-desenvolvimento.mp3',
         },
       },
       nav: {
