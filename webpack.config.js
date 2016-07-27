@@ -6,6 +6,7 @@ const argv = require('yargs').argv
 const plugins = [
   new HtmlWebpackPlugin({
     template: './src/index.html',
+    favicon: './src/favicon.ico',
   }),
   new CopyWebpackPlugin([
     { from: 'src/assets', to: 'assets' },
