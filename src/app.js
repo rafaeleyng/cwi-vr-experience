@@ -13,10 +13,11 @@ import assetsPreloadService from './services/assetsPreloadService'
 eventService.on('asset:loaded:image', () => {
   assetsPreloadService.loadedImages++
   if (assetsPreloadService.didLoadAllImages()) {
-    eventService.emit('asset:loaded:images')
     assetsPreloadService.isLoading = false
+    eventService.emit('asset:loaded:images')
+  } else {
+    assetsPreloadService.isLoading = true
   }
-  assetsPreloadService.isLoading = true
 })
 
 render(<Tour />, document.getElementById('app'))

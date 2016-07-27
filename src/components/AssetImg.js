@@ -3,7 +3,7 @@ import eventService from '../services/eventService'
 
 const AssetImg = ({ id, src }) => {
   const onLoad = () => {
-    eventService.emit('asset:loaded:image', id)
+    eventService.emit('asset:loaded:image')
   }
 
   return (

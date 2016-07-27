@@ -23,7 +23,6 @@ const findReachableStatesAssets = (reachableStatesNames, states, currentStateNam
 class AssetsPreloadService {
   constructor() {
     this.loadedImages = 0
-    this.isLoading = false
   }
 
   didLoadAllImages() {

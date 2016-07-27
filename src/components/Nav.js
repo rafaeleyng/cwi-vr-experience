@@ -1,4 +1,5 @@
 import React from 'react'
+import assetsPreloadService from '../services/assetsPreloadService'
 import eventService from '../services/eventService'
 
 export default class Nav extends React.Component {
@@ -10,22 +11,25 @@ export default class Nav extends React.Component {
     // bind
     this.handleEnterNav = this.handleEnterNav.bind(this)
     this.handleLeaveNav = this.handleLeaveNav.bind(this)
+    this.fadeNav = this.fadeNav.bind(this)
   }
 
   componentDidMount() {
     this.refs.navImage.addEventListener('mouseenter', this.handleEnterNav)
     this.refs.navImage.addEventListener('mouseleave', this.handleLeaveNav)
-
-    eventService.on('asset:loaded:images', () => {
-      this.refs.navImage.emit('fade')
-      this.refs.navText.emit('fade')
-    })
+    eventService.on('asset:loaded:images', this.fadeNav)
   }
 
   componentWillUnmount() {
     clearTimeout(this.timeout)
     this.refs.navImage.removeEventListener('mouseenter', this.handleEnterNav)
     this.refs.navImage.removeEventListener('mouseleave', this.handleLeaveNav)
+    eventService.off('asset:loaded:images', this.fadeNav)
+  }
+
+  fadeNav() {
+    this.refs.navImage.emit('fade')
+    this.refs.navText.emit('fade')
   }
 
   handleEnterNav() {
@@ -43,6 +47,8 @@ export default class Nav extends React.Component {
   }
 
   render() {
+    const navOpacity = assetsPreloadService.isLoading ? '0' : '1'
+
     return (
       <a-entity
         look-at="#camera"
@@ -50,7 +56,7 @@ export default class Nav extends React.Component {
       >
         <a-image
           ref="navImage"
-          material={`transparent: true; opacity: 0; shader: flat; src: #${this.props.navImageId};`}
+          material={`transparent: true; opacity: ${navOpacity}; shader: flat; src: #${this.props.navImageId};`}
           width="5"
           height="5"
           scale="1 1 1"
@@ -68,7 +74,7 @@ export default class Nav extends React.Component {
         <a-entity
           ref="navText"
           text={`text: ${this.props.nav.label}; size: 1.2; font: Montserrat;`}
-          material={`transparent: true; opacity: 0; color: #ffffff`}
+          material={`transparent: true; opacity: ${navOpacity}; color: #ffffff`}
           position="3 -0.4 0"
         >
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
