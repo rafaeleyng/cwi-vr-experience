@@ -15,7 +15,7 @@ const plugins = [
 
 if (argv.webpack_env === 'prod') {
   plugins.push(new webpack.optimize.DedupePlugin())
-  plugins.push(new webpack.optimize.UglifyJsPlugin())
+  // plugins.push(new webpack.optimize.UglifyJsPlugin())
   plugins.push(new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify('production'),
