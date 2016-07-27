@@ -37,7 +37,8 @@
     "yargs": "4.7.1"
   },
   "dependencies": {
-    "aframe": "0.2.0",
+    "aframe": "aframevr/aframe#43cfbc0c18cc1da1d2d0230f75643fdfb2252a28",
+    "aframe-look-at-component": "0.1.1",
     "aframe-text-component": "0.3.0",
     "macchina": "0.2.0",
     "react": "15.2.0",
