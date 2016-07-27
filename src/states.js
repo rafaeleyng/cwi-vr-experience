@@ -86,7 +86,6 @@ export default [
       room: {
         single: {
           skySrc: '#sky-sl-hall',
-          // skySound: './assets/sound/sl-hall.mp3',
           skySound: '#sound-sl-hall',
         },
       },
@@ -98,7 +97,7 @@ export default [
             position: '-20 0 4',
           },
           {
-            state: 'sl-terceiro-elevador',
+            state: 'sl-terceiro-desenvolvimento',
             label: 'Subir',
             position: '35 0 1',
           },
@@ -118,43 +117,6 @@ export default [
   ----------------------------------------------------------------------------------------------------------------------------------------------------
   */
   /*
-    sl-terceiro-elevador
-  */
-  {
-    name: 'sl-terceiro-elevador',
-    properties: {
-      room: {
-        single: {
-          skySrc: '#sky-sl-terceiro-elevador',
-        },
-      },
-      nav: {
-        all: [
-          {
-            state: 'sl-hall',
-            label: 'Descer',
-            position: '11 -5 -15',
-          },
-          {
-            state: 'sl-terceiro-desenvolvimento',
-            label: 'Desenvolvimento',
-            position: '-20 0 3',
-          },
-          {
-            state: 'sl-quinto-elevador',
-            label: 'Subir',
-            position: '11 5 -15',
-          },
-        ],
-      },
-      assets: {
-        all: [
-          <AssetImg key="sky-sl-terceiro-elevador" id="sky-sl-terceiro-elevador" src="./assets/sky/sl-terceiro-elevador.jpg" />,
-        ],
-      },
-    },
-  },
-  /*
     sl-terceiro-desenvolvimento
   */
   {
@@ -163,16 +125,20 @@ export default [
       room: {
         single: {
           skySrc: '#sky-sl-terceiro-desenvolvimento',
-          // skySound: './assets/sound/sl-terceiro-desenvolvimento.mp3',
           skySound: '#sound-sl-terceiro-desenvolvimento',
         },
       },
       nav: {
         all: [
           {
-            state: 'sl-terceiro-elevador',
-            label: 'Elevador',
-            position: '4 0 -20',
+            state: 'sl-hall',
+            label: 'Descer',
+            position: '6 -4 -25',
+          },
+          {
+            state: 'sl-quinto-meetingspace',
+            label: 'Subir',
+            position: '6 4 -25',
           },
           {
             state: 'sl-terceiro-auditorio',
@@ -224,43 +190,6 @@ export default [
   ----------------------------------------------------------------------------------------------------------------------------------------------------
   */
   /*
-    sl-quinto-elevador
-  */
-  {
-    name: 'sl-quinto-elevador',
-    properties: {
-      room: {
-        single: {
-          skySrc: '#sky-sl-quinto-elevador',
-        },
-      },
-      nav: {
-        all: [
-          {
-            state: 'sl-terceiro-elevador',
-            label: 'Descer',
-            position: '14 -5 -15',
-          },
-          {
-            state: 'sl-quinto-meetingspace',
-            label: 'Meeting space',
-            position: '-10 -2 30',
-          },
-          {
-            state: 'sl-sexto-interior',
-            label: 'Subir',
-            position: '14 5 -15',
-          },
-        ],
-      },
-      assets: {
-        all: [
-          <AssetImg key="sky-sl-quinto-elevador" id="sky-sl-quinto-elevador" src="./assets/sky/sl-quinto-elevador.jpg" />,
-        ],
-      },
-    },
-  },
-  /*
     sl-quinto-meetingspace
   */
   {
@@ -274,9 +203,14 @@ export default [
       nav: {
         all: [
           {
-            state: 'sl-quinto-elevador',
-            label: 'Elevador',
-            position: '25 2 1',
+            state: 'sl-terceiro-desenvolvimento',
+            label: 'Descer',
+            position: '24 -2 -1',
+          },
+          {
+            state: 'sl-sexto-exterior',
+            label: 'Subir',
+            position: '24 4 -1',
           },
           {
             state: 'sl-quinto-desenvolvimento',
@@ -327,38 +261,6 @@ export default [
   ----------------------------------------------------------------------------------------------------------------------------------------------------
   */
   /*
-    sl-sexto-interior
-  */
-  {
-    name: 'sl-sexto-interior',
-    properties: {
-      room: {
-        single: {
-          skySrc: '#sky-sl-sexto-interior',
-        },
-      },
-      nav: {
-        all: [
-          {
-            state: 'sl-quinto-elevador',
-            label: 'Descer',
-            position: '1 0 -20',
-          },
-          {
-            state: 'sl-sexto-exterior',
-            label: 'Terraço',
-            position: '-20 2.8 1',
-          },
-        ],
-      },
-      assets: {
-        all: [
-          <AssetImg key="sky-sl-sexto-interior" id="sky-sl-sexto-interior" src="./assets/sky/sl-sexto-interior.jpg" />,
-        ],
-      },
-    },
-  },
-  /*
     sl-sexto-exterior
   */
   {
@@ -372,8 +274,8 @@ export default [
       nav: {
         all: [
           {
-            state: 'sl-sexto-interior',
-            label: 'Salão de Festas',
+            state: 'sl-quinto-meetingspace',
+            label: 'Descer',
             position: '-25 0 7',
           },
           {
@@ -446,7 +348,7 @@ export default [
       room: {
         single: {
           skySrc: '#sky-cg-desenvolvimento',
-          skySound: './assets/sound/cg-desenvolvimento.mp3',
+          skySound: '#sound-cg-desenvolvimento',
         },
       },
       nav: {
@@ -517,7 +419,7 @@ export default [
       room: {
         single: {
           skySrc: '#sky-sp-desenvolvimento',
-          skySound: './assets/sound/sp-desenvolvimento.mp3',
+          skySound: '#sound-sp-desenvolvimento',
         },
       },
       nav: {
@@ -527,44 +429,12 @@ export default [
             label: 'Hall',
             position: '-22 0 -10',
           },
-          {
-            state: 'sp-sacada',
-            label: 'Sacada',
-            position: '25 -2 8',
-          },
         ],
       },
       assets: {
         all: [
           <AssetImg key="sky-sp-desenvolvimento" id="sky-sp-desenvolvimento" src="./assets/sky/sp-desenvolvimento.jpg" />,
           <AssetSound key="sound-sp-desenvolvimento" id="sound-sp-desenvolvimento" src="./assets/sound/sp-desenvolvimento.mp3" />,
-        ],
-      },
-    },
-  },
-  /*
-    sp-sacada
-  */
-  {
-    name: 'sp-sacada',
-    properties: {
-      room: {
-        single: {
-          skySrc: '#sky-sp-sacada',
-        },
-      },
-      nav: {
-        all: [
-          {
-            state: 'sp-desenvolvimento',
-            label: 'Desenvolvimento',
-            position: '1 0 20',
-          },
-        ],
-      },
-      assets: {
-        all: [
-          <AssetImg key="sky-sp-sacada" id="sky-sp-sacada" src="./assets/sky/sp-sacada.jpg" />,
         ],
       },
     },
