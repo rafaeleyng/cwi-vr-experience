@@ -33,6 +33,10 @@ export default class Nav extends React.Component {
   }
 
   handleEnterNav() {
+    if (assetsPreloadService.isLoading) {
+      return
+    }
+
     clearTimeout(this.timeout)
     this.setState({ focus: true })
     this.timeout = setTimeout(() => {
@@ -42,6 +46,10 @@ export default class Nav extends React.Component {
   }
 
   handleLeaveNav() {
+    if (assetsPreloadService.isLoading) {
+      return
+    }
+
     clearTimeout(this.timeout)
     this.setState({ focus: false })
   }
