@@ -82627,6 +82627,10 @@
 	    value: function handleEnterNav() {
 	      var _this2 = this;
 
+	      if (_assetsPreloadService2.default.isLoading) {
+	        return;
+	      }
+
 	      clearTimeout(this.timeout);
 	      this.setState({ focus: true });
 	      this.timeout = setTimeout(function () {
@@ -82637,6 +82641,10 @@
 	  }, {
 	    key: 'handleLeaveNav',
 	    value: function handleLeaveNav() {
+	      if (_assetsPreloadService2.default.isLoading) {
+	        return;
+	      }
+
 	      clearTimeout(this.timeout);
 	      this.setState({ focus: false });
 	    }
