@@ -82133,10 +82133,6 @@
 
 	var _Room2 = _interopRequireDefault(_Room);
 
-	var _AssetImg = __webpack_require__(180);
-
-	var _AssetImg2 = _interopRequireDefault(_AssetImg);
-
 	var _states = __webpack_require__(183);
 
 	var _states2 = _interopRequireDefault(_states);
@@ -82205,7 +82201,7 @@
 	      var _this3 = this;
 
 	      // assets
-	      var assets = _assetsPreloadService2.default.getAssetsTag(this.macchina.state(), _states2.default, [{ id: this.state.navImageId, src: "./assets/image/nav.png" }, { id: this.state.welcomeImageId, src: "./assets/image/welcome.png" }]);
+	      var assets = _assetsPreloadService2.default.getAssetsTag(this.macchina.state(), _states2.default, [{ id: this.state.navImageId, src: './assets/image/nav-white.png' }, { id: this.state.welcomeImageId, src: './assets/image/welcome.png' }]);
 
 	      // camera
 	      var cameraRotation = '0 0 0';
@@ -83195,24 +83191,13 @@
 
 /***/ },
 /* 183 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _react = __webpack_require__(10);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _AssetImg = __webpack_require__(180);
-
-	var _AssetImg2 = _interopRequireDefault(_AssetImg);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	exports.default = [{
 	  name: 'start'
 	}, {
@@ -83271,8 +83256,8 @@
 	    },
 	    assets: {
 	      all: [{
-	        id: "sky-sl-fachada",
-	        src: "./assets/sky/sl-fachada.jpg"
+	        id: 'sky-sl-fachada',
+	        src: './assets/sky/sl-fachada.jpg'
 	      }]
 	    }
 	  }
@@ -83305,8 +83290,8 @@
 	    },
 	    assets: {
 	      all: [{
-	        id: "sky-sl-hall",
-	        src: "./assets/sky/sl-hall.jpg"
+	        id: 'sky-sl-hall',
+	        src: './assets/sky/sl-hall.jpg'
 	      }]
 	    }
 	  }
