@@ -42,7 +42,7 @@ export default class Tour extends React.Component {
   render() {
     // assets
     const assets = assetsPreloadService.getAssetsTag(this.macchina.state(), states, [
-      { id: this.state.navImageId, src: "./assets/image/nav.png", },
+      { id: this.state.navImageId, src: "./assets/image/nav-white.png", },
       { id: this.state.welcomeImageId, src: "./assets/image/welcome.png", },
     ])
 
