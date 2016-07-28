@@ -82648,6 +82648,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var navOpacity = _assetsPreloadService2.default.isLoading ? '0' : '1';
+	      var navColor = this.state.focus ? '#f6b63e' : '#ffffff';
 
 	      return _react2.default.createElement(
 	        'a-entity',
@@ -82659,7 +82660,7 @@
 	          'a-image',
 	          {
 	            ref: 'navImage',
-	            material: 'transparent: true; opacity: ' + navOpacity + '; shader: flat; src: #' + this.props.navImageId + ';',
+	            material: 'transparent: true; opacity: ' + navOpacity + '; color: ' + navColor + '; shader: flat; src: #' + this.props.navImageId,
 	            width: '5',
 	            height: '5',
 	            scale: '1 1 1'
@@ -82684,7 +82685,7 @@
 	          {
 	            ref: 'navText',
 	            text: 'text: ' + this.props.nav.label + '; size: 1.2; font: Montserrat;',
-	            material: 'transparent: true; opacity: ' + navOpacity + '; color: ' + (this.state.focus ? '#f6b63e' : '#ffffff') + ' ',
+	            material: 'transparent: true; opacity: ' + navOpacity + '; color: ' + navColor + '; shader: flat',
 	            position: '3 -0.4 0'
 	          },
 	          _react2.default.createElement('a-animation', {
