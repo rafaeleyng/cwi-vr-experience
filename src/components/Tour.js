@@ -1,7 +1,6 @@
 import React from 'react'
 import Macchina from 'macchina'
 import Room from './Room'
-import AssetImg from './AssetImg'
 import states from '../states'
 import assetsPreloadService from '../services/assetsPreloadService'
 
@@ -42,8 +41,8 @@ export default class Tour extends React.Component {
   render() {
     // assets
     const assets = assetsPreloadService.getAssetsTag(this.macchina.state(), states, [
-      { id: this.state.navImageId, src: "./assets/image/nav-white.png", },
-      { id: this.state.welcomeImageId, src: "./assets/image/welcome.png", },
+      { id: this.state.navImageId, src: './assets/image/nav-white.png' },
+      { id: this.state.welcomeImageId, src: './assets/image/welcome.png' },
     ])
 
     // camera

@@ -1,6 +1,3 @@
-import React from 'react'
-import AssetImg from './components/AssetImg'
-
 export default [
   {
     name: 'start',
@@ -69,8 +66,8 @@ export default [
       assets: {
         all: [
           {
-            id: "sky-sl-fachada",
-            src: "./assets/sky/sl-fachada.jpg",
+            id: 'sky-sl-fachada',
+            src: './assets/sky/sl-fachada.jpg',
           },
         ],
       },
@@ -108,8 +105,8 @@ export default [
       assets: {
         all: [
           {
-            id: "sky-sl-hall",
-            src: "./assets/sky/sl-hall.jpg",
+            id: 'sky-sl-hall',
+            src: './assets/sky/sl-hall.jpg',
           },
         ],
       },
