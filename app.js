@@ -82185,6 +82185,11 @@
 	      });
 	    }
 	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      window.scrollTo(0, 1);
+	    }
+	  }, {
 	    key: 'nav',
 	    value: function nav(stateName) {
 	      if (this.visitedStatesNames.every(function (s) {
