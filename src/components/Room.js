@@ -15,10 +15,11 @@ export default class Room extends React.Component {
       skyProps.sound = `src: ${room.skySound}`
     }
 
-    setTimeout(() => {
-      // console.log('this.refs.sky', this.refs.sky.components.sound.play());
+    const playSound = () => {
       this.refs.sky.components.sound.play()
-    }, 2000)
+    }
+
+    // setTimeout(playSound, 2000)
 
     const sky = (
       <a-sky
@@ -46,6 +47,21 @@ export default class Room extends React.Component {
         navCallback={navCallback}
       />
     ))
+
+    listNavElement.push(
+      <Nav
+        key="rafael"
+        nav={          {
+                    state: 'sl-fachada',
+                    label: 'Iniciar',
+                    position: '10 4 -13',
+                  }}
+        navImageId={navImageId}
+        navCallback={playSound}
+      />
+    )
+
+    console.log('nav', listNavElement);
 
     return (
       <a-entity visible={visible}>
