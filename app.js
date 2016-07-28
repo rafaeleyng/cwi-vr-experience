@@ -82507,10 +82507,11 @@
 	        skyProps.sound = 'src: ' + room.skySound;
 	      }
 
-	      setTimeout(function () {
-	        // console.log('this.refs.sky', this.refs.sky.components.sound.play());
+	      var playSound = function playSound() {
 	        _this2.refs.sky.components.sound.play();
-	      }, 2000);
+	      };
+
+	      // setTimeout(playSound, 2000)
 
 	      var sky = _react2.default.createElement('a-sky', skyProps);
 
@@ -82534,6 +82535,19 @@
 	          navCallback: navCallback
 	        });
 	      });
+
+	      listNavElement.push(_react2.default.createElement(_Nav2.default, {
+	        key: 'rafael',
+	        nav: {
+	          state: 'sl-fachada',
+	          label: 'Iniciar',
+	          position: '10 4 -13'
+	        },
+	        navImageId: navImageId,
+	        navCallback: playSound
+	      }));
+
+	      console.log('nav', listNavElement);
 
 	      return _react2.default.createElement(
 	        'a-entity',
