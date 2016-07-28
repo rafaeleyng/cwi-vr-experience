@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npm run clean && webpack --colors --webpack_env=prod",
     "clean": "rimraf ./dist",
-    "deploy": "npm run build && gh-pages -d dist",
+    "deploy": "npm run build && npm run gh-pages",
+    "gh-pages": "gh-pages -d dist",
     "lint": "esw -w ./src/**/*.js ./src/*.js ./*.js || exit 0",
     "start": "webpack-dev-server --colors --webpack_env=dev"
   },
