@@ -82484,8 +82484,6 @@
 	  _createClass(Room, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
 	      var _props = this.props;
 	      var visible = _props.visible;
 	      var room = _props.room;
@@ -82497,21 +82495,13 @@
 	      var navCallback = _props.navCallback;
 	      // sky
 
-	      var skyProps = {
-	        ref: 'sky'
-	      };
+	      var skyProps = {};
 	      var skySrc = room.skySrc ? 'src: ' + room.skySrc + ';' : '';
 	      var skyColor = room.skyColor ? 'color: ' + room.skyColor + ';' : '';
 	      skyProps.material = skySrc + ' ' + skyColor + ' shader: flat';
 	      if (room.skySound && visible) {
-	        skyProps.sound = 'src: ' + room.skySound;
+	        skyProps.sound = 'src: ' + room.skySound + '; autoplay: true';
 	      }
-
-	      var playSound = function playSound() {
-	        _this2.refs.sky.components.sound.play();
-	      };
-
-	      // setTimeout(playSound, 2000)
 
 	      var sky = _react2.default.createElement('a-sky', skyProps);
 
@@ -82535,19 +82525,6 @@
 	          navCallback: navCallback
 	        });
 	      });
-
-	      listNavElement.push(_react2.default.createElement(_Nav2.default, {
-	        key: 'rafael',
-	        nav: {
-	          state: 'sl-fachada',
-	          label: 'Iniciar',
-	          position: '10 4 -13'
-	        },
-	        navImageId: navImageId,
-	        navCallback: playSound
-	      }));
-
-	      console.log('nav', listNavElement);
 
 	      return _react2.default.createElement(
 	        'a-entity',
@@ -83243,8 +83220,7 @@
 	  properties: {
 	    room: {
 	      single: {
-	        skyColor: '#111111',
-	        skySound: './assets/sound/sl-hall.mp3'
+	        skyColor: '#111111'
 	      }
 	    },
 	    nav: {
