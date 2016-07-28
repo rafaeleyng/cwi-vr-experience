@@ -82484,6 +82484,8 @@
 	  _createClass(Room, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var _props = this.props;
 	      var visible = _props.visible;
 	      var room = _props.room;
@@ -82495,13 +82497,20 @@
 	      var navCallback = _props.navCallback;
 	      // sky
 
-	      var skyProps = {};
+	      var skyProps = {
+	        ref: 'sky'
+	      };
 	      var skySrc = room.skySrc ? 'src: ' + room.skySrc + ';' : '';
 	      var skyColor = room.skyColor ? 'color: ' + room.skyColor + ';' : '';
 	      skyProps.material = skySrc + ' ' + skyColor + ' shader: flat';
 	      if (room.skySound && visible) {
-	        skyProps.sound = 'src: ' + room.skySound + '; autoplay: true';
+	        skyProps.sound = 'src: ' + room.skySound;
 	      }
+
+	      setTimeout(function () {
+	        // console.log('this.refs.sky', this.refs.sky.components.sound.play());
+	        _this2.refs.sky.components.sound.play();
+	      }, 2000);
 
 	      var sky = _react2.default.createElement('a-sky', skyProps);
 
@@ -83220,7 +83229,8 @@
 	  properties: {
 	    room: {
 	      single: {
-	        skyColor: '#111111'
+	        skyColor: '#111111',
+	        skySound: './assets/sound/sl-hall.mp3'
 	      }
 	    },
 	    nav: {
