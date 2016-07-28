@@ -5,13 +5,20 @@ export default class Room extends React.Component {
   render() {
     const { visible, room, listNav = [], listImage = [], navImageId, navCallback } = this.props
     // sky
-    const skyProps = {}
+    const skyProps = {
+      ref: 'sky'
+    }
     const skySrc = room.skySrc ? `src: ${room.skySrc};` : ''
     const skyColor = room.skyColor ? `color: ${room.skyColor};` : ''
     skyProps.material = `${skySrc} ${skyColor} shader: flat`
     if (room.skySound && visible) {
-      skyProps.sound = `src: ${room.skySound}; autoplay: true`
+      skyProps.sound = `src: ${room.skySound}`
     }
+
+    setTimeout(() => {
+      // console.log('this.refs.sky', this.refs.sky.components.sound.play());
+      this.refs.sky.components.sound.play()
+    }, 2000)
 
     const sky = (
       <a-sky
