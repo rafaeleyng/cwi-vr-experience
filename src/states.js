@@ -8,6 +8,7 @@ export default [
       room: {
         single: {
           skyColor: '#111111',
+          skySound: './assets/sound/sl-hall.mp3',
         },
       },
       nav: {
