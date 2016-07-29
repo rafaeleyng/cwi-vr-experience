@@ -83293,7 +83293,7 @@
 	  _createClass(PlaySound, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.refs.box.addEventListener('mouseenter', this.props.callback);
+	      this.refs.box.addEventListener('click', this.props.callback);
 	    }
 	  }, {
 	    key: 'render',
