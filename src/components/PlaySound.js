@@ -6,7 +6,7 @@ export default class PlaySound extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.box.addEventListener('mouseenter', this.props.callback)
+    this.refs.box.addEventListener('click', this.props.callback)
   }
 
   render() {
