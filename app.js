@@ -82133,7 +82133,7 @@
 
 	var _Room2 = _interopRequireDefault(_Room);
 
-	var _states = __webpack_require__(185);
+	var _states = __webpack_require__(183);
 
 	var _states2 = _interopRequireDefault(_states);
 
@@ -82234,8 +82234,7 @@
 	          listNav: state.properties.nav.all,
 	          listImage: state.properties.image ? state.properties.image.all : undefined,
 	          room: state.properties.room.single,
-	          navImageId: _this3.state.navImageId,
-	          isWelcome: currentStateName === 'welcome'
+	          navImageId: _this3.state.navImageId
 	        });
 	      });
 
@@ -82461,14 +82460,6 @@
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _AudioContext = __webpack_require__(183);
-
-	var _AudioContext2 = _interopRequireDefault(_AudioContext);
-
-	var _PlaySound = __webpack_require__(184);
-
-	var _PlaySound2 = _interopRequireDefault(_PlaySound);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -82480,43 +82471,13 @@
 	var Room = function (_React$Component) {
 	  _inherits(Room, _React$Component);
 
-	  function Room(props) {
+	  function Room() {
 	    _classCallCheck(this, Room);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Room).call(this, props));
-
-	    _this.playSound = _this.playSound.bind(_this);
-	    _this.prepareAudio();
-	    _this.source = _AudioContext2.default.createBufferSource();
-	    _this.isPlaying = false;
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Room).apply(this, arguments));
 	  }
 
 	  _createClass(Room, [{
-	    key: 'prepareAudio',
-	    value: function prepareAudio() {
-	      var _this2 = this;
-
-	      var bufferSound = function bufferSound(event) {
-	        var request = event.target;
-	        _AudioContext2.default.decodeAudioData(request.response, function (buffer) {
-	          _this2.source.buffer = buffer;
-	          _this2.source.connect(_AudioContext2.default.destination);
-	        });
-	      };
-
-	      var request = new XMLHttpRequest();
-	      request.open('GET', this.props.room.skySound, true);
-	      request.responseType = 'arraybuffer';
-	      request.addEventListener('load', bufferSound, false);
-	      request.send();
-	    }
-	  }, {
-	    key: 'playSound',
-	    value: function playSound() {
-	      this.source.start();
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
@@ -82528,24 +82489,17 @@
 	      var listImage = _props$listImage === undefined ? [] : _props$listImage;
 	      var navImageId = _props.navImageId;
 	      var navCallback = _props.navCallback;
-	      var isWelcome = _props.isWelcome;
 	      // sky
 
 	      var skyProps = {};
 	      var skySrc = room.skySrc ? 'src: ' + room.skySrc + ';' : '';
 	      var skyColor = room.skyColor ? 'color: ' + room.skyColor + ';' : '';
 	      skyProps.material = skySrc + ' ' + skyColor + ' shader: flat';
-
-	      var sky = _react2.default.createElement('a-sky', skyProps);
-
-	      var audioProps = { ref: 'audio' };
 	      if (room.skySound && visible) {
-	        audioProps.src = room.skySound;
-	      } else {
-	        audioProps.src = './assets/sound/blank.mp3';
+	        skyProps.sound = 'src: ' + room.skySound + '; autoplay: true';
 	      }
 
-	      var audio = _react2.default.createElement('audio', audioProps);
+	      var sky = _react2.default.createElement('a-sky', skyProps);
 
 	      // images
 	      var listImageElement = listImage.map(function (image, i) {
@@ -82568,19 +82522,12 @@
 	        });
 	      });
 
-	      var playSound = _react2.default.createElement(_PlaySound2.default, {
-	        position: '5 5 -5',
-	        callback: this.playSound
-	      });
-
 	      return _react2.default.createElement(
 	        'a-entity',
 	        { visible: visible },
 	        sky,
 	        listImageElement,
-	        listNavElement,
-	        playSound,
-	        audio
+	        listNavElement
 	      );
 	    }
 	  }]);
@@ -82597,8 +82544,7 @@
 	  listNav: _react2.default.PropTypes.array.isRequired,
 	  listImage: _react2.default.PropTypes.array,
 	  navImageId: _react2.default.PropTypes.string.isRequired,
-	  navCallback: _react2.default.PropTypes.func.isRequired,
-	  isWelcome: _react2.default.PropTypes.bool.isRequired
+	  navCallback: _react2.default.PropTypes.func.isRequired
 	};
 
 /***/ },
@@ -83253,69 +83199,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	console.log('audioContext');
-
-	exports.default = new (window.AudioContext || window.webkitAudioContext)();
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(10);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var PlaySound = function (_React$Component) {
-	  _inherits(PlaySound, _React$Component);
-
-	  function PlaySound(props) {
-	    _classCallCheck(this, PlaySound);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(PlaySound).call(this, props));
-	  }
-
-	  _createClass(PlaySound, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.refs.box.addEventListener('click', this.props.callback);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement('a-box', { ref: 'box', color: '#6173F4', width: '1', height: '1', depth: '1', position: this.props.position });
-	    }
-	  }]);
-
-	  return PlaySound;
-	}(_react2.default.Component);
-
-	exports.default = PlaySound;
-
-/***/ },
-/* 185 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
 	exports.default = [{
 	  name: 'start'
 	}, {
@@ -83323,8 +83206,7 @@
 	  properties: {
 	    room: {
 	      single: {
-	        skyColor: '#111111',
-	        skySound: './assets/sound/sl-hall.mp3'
+	        skyColor: '#111111'
 	      }
 	    },
 	    nav: {
