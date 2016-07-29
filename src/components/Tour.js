@@ -30,10 +30,6 @@ export default class Tour extends React.Component {
     })
   }
 
-  componentDidMount() {
-    window.scrollTo(0,1);
-  }
-
   nav(stateName) {
     if (this.visitedStatesNames.every(s => s !== stateName)) {
       this.visitedStatesNames.push(stateName)
