@@ -1,3 +1,0 @@
-console.log('audioContext');
-
-export default new ( window.AudioContext || window.webkitAudioContext )()

@@ -75,7 +75,6 @@ export default class Tour extends React.Component {
             listImage={state.properties.image ? state.properties.image.all : undefined}
             room={state.properties.room.single}
             navImageId={this.state.navImageId}
-            isWelcome={currentStateName === 'welcome'}
           />
         )
       })
